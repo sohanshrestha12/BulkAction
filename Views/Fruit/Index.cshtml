@@ -1,0 +1,76 @@
+﻿@model List<Fruit>
+@using FruitApp.Enums
+
+@{
+    var sn = 1;
+}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Add Fruit</h1>
+        <div id="addBtn">
+            <i class="fa-solid fa-plus" style="cursor:pointer;"></i>
+        </div>
+    </div>
+    <form id="myForm" asp-action="Create" asp-controller="Fruit" method="post">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Sn</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Season</th>
+                    <th scope="col">Category</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(sn++)</td>
+                        <td>@(item.Name)</td>
+                        <td>@(item.Price)</td>
+                        <td>@(item.Season)</td>
+                        <td>@(item.Category)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-end">
+
+            <button class="btn btn-success" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#season').select2();
+        $('#category').select2();
+
+        var counter = 0;
+        let mainForm = document.getElementById('myForm');
+        let tableBody = document.getElementById('tableBody');
+        let addBtn = document.getElementById('addBtn');
+
+
+        addBtn.addEventListener('click', e => {
+            let html = `<tr>
+                <td></td>
+                                            <td> <input type="text" name="Fruit[${counter}].Name" />   </td>
+                                            <td> <input type="number" name="Fruit[${counter}].Price" />   </td>
+                                            <td>  @Html.DropDownList("Fruit[${counter}].Season", new SelectList(Enum.GetValues(typeof(FruitSeasonEnum))), "select-season", new { @class = "form-select select2", @id = "season" })
+                                            <td>  @Html.DropDownList("Fruit[${counter}].Category", new SelectList(Enum.GetValues(typeof(FruitCategoryEnum))), "select-Category", new { @class = "form-select select2", @id = "category" })
+                                                    <td><i class="fa-solid fa-xmark"  style="cursor:pointer;"></i></td>
+                                        </tr>`;
+            tableBody.insertAdjacentHTML('beforeend', html);
+            counter++;
+        });
+
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('fa-xmark')) {
+                e.target.closest('tr').remove();
+            }
+        });
+    });
+</script>

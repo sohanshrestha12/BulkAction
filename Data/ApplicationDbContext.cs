@@ -1,0 +1,11 @@
+﻿using FruitApp.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace FruitApp.Data
+{
+    public class ApplicationDbContext:DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public DbSet<Fruit> Fruits { get; set; }
+    }
+}
