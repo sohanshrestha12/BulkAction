@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FruitApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+543903e36c037ec159cb89ba03fdead59f5c338f")]
 [assembly: System.Reflection.AssemblyProductAttribute("FruitApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FruitApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

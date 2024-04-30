@@ -14,5 +14,6 @@ namespace FruitApp.Models
         public FruitSeasonEnum Season { get; set; }
         public FruitCategoryEnum Category { get; set; }
         public bool IsDeleted { get; set; }
+        public bool? IsChecked { get; set; }
     }
 }

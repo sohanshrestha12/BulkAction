@@ -1,11 +1,10 @@
+D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.dll
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\appsettings.Development.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\appsettings.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.staticwebassets.runtime.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.exe
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.deps.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.runtimeconfig.json
-D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.dll
-D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.pdb
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\Azure.Core.dll
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\Azure.Identity.dll
 D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\Humanizer.dll
@@ -118,6 +117,7 @@ D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.csproj.Core
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.MvcApplicationPartsAssemblyInfo.cache
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.RazorAssemblyInfo.cache
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.RazorAssemblyInfo.cs
+D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.sourcelink.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\staticwebassets.build.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\staticwebassets.development.json
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\staticwebassets\msbuild.FruitApp.Microsoft.AspNetCore.StaticWebAssets.props
@@ -133,4 +133,5 @@ D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.dll
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\refint\FruitApp.dll
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.pdb
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\FruitApp.genruntimeconfig.cache
+D:\Asp.net office\day-12\FruitApp\FruitApp\bin\Debug\net8.0\FruitApp.pdb
 D:\Asp.net office\day-12\FruitApp\FruitApp\obj\Debug\net8.0\ref\FruitApp.dll

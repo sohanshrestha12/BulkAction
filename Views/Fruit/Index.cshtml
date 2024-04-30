@@ -15,6 +15,7 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
+                    <th scope="col"><input type="checkbox" id="selectAll" class="form-check-input" /> Select all</th>
                     <th scope="col">Sn</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
@@ -26,17 +27,40 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@(sn++)</td>
-                        <td>@(item.Name)</td>
-                        <td>@(item.Price)</td>
-                        <td>@(item.Season)</td>
-                        <td>@(item.Category)</td>
+                        <td>
+                            <input type="checkbox" class="form-check-input chk" name="Fruit[@sn].IsChecked" value="true"/>
+                        </td> 
+                        <td>@(sn)</td>
+                        <input type="hidden" name="Fruit.index" value="@(sn)"></input>
+                        <input type="hidden" name="Fruit[@sn].Id" value="@(item.Id)"></input>
+                        <td> <input type="text" value="@(item.Name)" name="Fruit[@sn].Name" /> </td>
+                        <td> <input type="text" value="@(item.Price)" name="Fruit[@sn].Price" /> </td>
+                        <td>
+                            <select class="form-select" name="Fruit[@sn].Season">
+                                @foreach (var option in Html.GetEnumSelectList<FruitSeasonEnum>())
+                                {
+
+                                    <option value="@option.Value" selected="@(int.Parse(option.Value) == (int)item.Season ? "selected" : null)">@option.Text</option>
+                                }
+                            </select>
+                        </td>
+                        @* <td> @Html.DropDownList("Season", new SelectList(Enum.GetValues(typeof(FruitSeasonEnum))), ((FruitSeasonEnum)item.Season).ToString(), new { @class = "form-select"}) </td>  *@
+                        <td>
+                            <select class="form-select" name="Fruit[@sn].Category">
+                                @foreach (var option in Html.GetEnumSelectList<FruitCategoryEnum>())
+                                {
+
+                                    <option value="@option.Value" selected="@(int.Parse(option.Value) == (int)item.Category ? "selected" : null)">@option.Text</option>
+                                }
+                            </select>
+                        </td>
                     </tr>
+                    sn++;
                 }
             </tbody>
         </table>
-        <div class="d-flex justify-content-end">
-
+        <div class="d-flex justify-content-end gap-3">
+            <button id="delete" type="button" class="btn btn-danger">Delete</button>
             <button class="btn btn-success" type="submit">Save</button>
         </div>
     </form>
@@ -45,24 +69,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#season').select2();
-        $('#category').select2();
-
         var counter = 0;
         let mainForm = document.getElementById('myForm');
         let tableBody = document.getElementById('tableBody');
         let addBtn = document.getElementById('addBtn');
+        let deleteRecords = document.getElementById('delete');
+        let selectAll = document.getElementById('selectAll');
+        let chk = document.getElementsByClassName('chk');
+
+        selectAll.addEventListener('click', e => {
+            if (selectAll.checked == true) {
+                Array.from(chk).forEach((item, i) => {
+                    item.checked = true;
+                });
+            }  if (selectAll.checked == false) {
+                Array.from(chk).forEach((item, i) => {
+                    item.checked = false;
+                });
+            }
+        });
 
 
         addBtn.addEventListener('click', e => {
             let html = `<tr>
-                <td></td>
-                                            <td> <input type="text" name="Fruit[${counter}].Name" />   </td>
-                                            <td> <input type="number" name="Fruit[${counter}].Price" />   </td>
-                                            <td>  @Html.DropDownList("Fruit[${counter}].Season", new SelectList(Enum.GetValues(typeof(FruitSeasonEnum))), "select-season", new { @class = "form-select select2", @id = "season" })
-                                            <td>  @Html.DropDownList("Fruit[${counter}].Category", new SelectList(Enum.GetValues(typeof(FruitCategoryEnum))), "select-Category", new { @class = "form-select select2", @id = "category" })
-                                                    <td><i class="fa-solid fa-xmark"  style="cursor:pointer;"></i></td>
-                                        </tr>`;
+                                    <td></td>
+                                    <td></td>
+                                    <input hidden type="text" name="Fruit.index" value="${counter}">
+                                    <td> <input type="text" name="Fruit[${counter}].Name" />   </td>
+                                    <td> <input type="number" name="Fruit[${counter}].Price" />   </td>
+                                    <td>  @Html.DropDownList("Fruit[${counter}].Season", new SelectList(Enum.GetValues(typeof(FruitSeasonEnum))), "select-season", new { @class = "form-select select2", @id = "season" })</td>
+                                    <td>  @Html.DropDownList("Fruit[${counter}].Category", new SelectList(Enum.GetValues(typeof(FruitCategoryEnum))), "select-Category", new { @class = "form-select select2", @id = "category" })</td>
+                                            <td><i class="fa-solid fa-xmark"  style="cursor:pointer;"></i></td>
+                                 </tr>`;
             tableBody.insertAdjacentHTML('beforeend', html);
             counter++;
         });
@@ -72,5 +110,11 @@
                 e.target.closest('tr').remove();
             }
         });
+
+        deleteRecords.addEventListener('click', e => {
+            mainForm.action ='/Fruit/Delete';
+            mainForm.submit();
+        });
+
     });
 </script>
